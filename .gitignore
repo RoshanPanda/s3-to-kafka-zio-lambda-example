@@ -1,0 +1,47 @@
+# Default ignored files
+/workspace.xml
+*.class
+*.log
+**/.aws-sam/
+
+# sbt specific
+null/
+.cache
+.history
+.lib/
+dist/*
+target/
+target\
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+**/target/
+null\
+# Scala-IDE specific
+.scala_dependencies
+.worksheet
+
+# IntelliJ
+.idea
+bsp
+.bsp
+.gradle
+
+# Metals
+.bloop
+.metals
+project/metals.sbt
+
+state-store-dir/
+
+# Vim
+*.swp
+
+# JEnv
+.java-version
+
+# OS X
+.DS_Store
+streamlets/src/main/resources/mw-tlog-local-app-tlog-development.json
+streamlets/src/main/resources/mw-tlog-local-app.json
