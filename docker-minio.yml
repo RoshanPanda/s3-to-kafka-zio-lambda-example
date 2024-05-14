@@ -1,0 +1,34 @@
+# For detailed information about docker-compose visit https://docs.docker.com/compose/
+# To start all docker containers required to execute the tests locally run:
+# docker-compose up #docker compose -f  docker-minio.yml up --platform linux/amd64
+#docker run -p 9000:9000 -p 9001:9001 \
+#> -e "MINIO_ROOT_USER=AKIAIOSFODNN7EXAMPLE" \
+#> -e "MINIO_ROOT_PASSWORD=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY" \
+#> minio/minio server --console-address :9001 /data
+# aws s3 ls --endpoint-url http://localhost:9000
+
+version: '2'
+services:
+  minio:
+    image: minio/minio:latest
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      - "MINIO_ROOT_USER=TESTKEY"
+      - "MINIO_ROOT_PASSWORD=TESTSECRET"
+      - "MINIO_DOMAIN=s3minio.alpakka"
+    command: server --console-address :9001 /local
+  minio_prep:
+    image: mesosphere/aws-cli
+    platform: linux/amd64
+    links:
+      - "minio"
+    environment:
+      - "MINIO_ROOT_USER=TESTKEY"
+      - "MINIO_ROOT_PASSWORD=TESTSECRET"
+    entrypoint: ""
+    command: >
+      sh -c "
+        aws --endpoint-url http://localhost:9000 s3api create-bucket --bucket pe-bucket
+      "

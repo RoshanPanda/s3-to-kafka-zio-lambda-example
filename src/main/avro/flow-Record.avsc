@@ -1,0 +1,78 @@
+{
+  "type": "record",
+  "doc": "SKU record to be published to destination topic",
+  "name": "RecordDimension",
+  "namespace": "com.roshan.messages",
+  "fields": [
+    {
+      "name": "itemId",
+      "doc": "Sku ID",
+      "type": "string"
+    },
+    {
+      "name": "orgId",
+      "type": "string"
+    },
+    {
+      "name": "height",
+      "type": [
+        "null",
+        "double"
+      ],
+      "default": null
+    },
+    {
+      "name": "width",
+      "type": [
+        "null",
+        "double"
+      ],
+      "default": null
+    },
+    {
+      "name": "length",
+      "type": [
+        "null",
+        "double"
+      ],
+      "default": null
+    },
+    {
+      "name": "volume",
+      "type": [
+        "null",
+        "double"
+      ],
+      "default": null
+    },
+    {
+      "name": "dimensionUom",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "name": "volumeUom",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "name": "weight",
+      "type": [
+        "null",
+        "double"
+      ],
+      "default": null
+    },
+    {
+      "name": "weightUOM",
+      "type": [
+        "null",
+        "string"
+      ]
+    }
+  ]
+}
