@@ -1,4 +1,4 @@
 
-.PHONY: wmos-s3-msk-build
-wmos-s3-msk-build:
+.PHONY: s3-msk-build
+s3-msk-build:
 	sbt "clean; assembly"
