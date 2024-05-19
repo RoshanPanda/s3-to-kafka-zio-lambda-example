@@ -46,10 +46,10 @@ object ProcessFlow {
       inputs <- ZStream.fromIterable(events)
         .flatMap(s3Serv.getObjectDefault)
         .via(Input.fromStringRecord)
-        .tap(a => logger.info(s"WMOS input ${a}"))
+        .tap(a => logger.info(s"input ${a}"))
         .map(a => a.map(b => RecordDimensionObj.fromInput(b)))
         .mapZIO(a => ZIO.collectAll(a))
-        .tap(a => logger.info(s"transformed to pe record ${a}"))
+        .tap(a => logger.info(s"transformed record ${a}"))
         .run(ZSink.collectAll)
       _ <- ZStream.fromIterable(inputs).mapZIO {
         case Some(a) => kafkaServ.sendToKafka(config.topic, a.itemId, a) *>
